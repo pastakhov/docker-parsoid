@@ -7,7 +7,7 @@ It is a part of [Containerized Mediawiki install](https://github.com/pastakhov/c
 ## Settings
 
 - `NUM_WORKERS` defines the number of worker processes to the parsoid service. Set to `0` to run everything in a single process without clustering. Use `ncpu` to run as many workers as there are CPU units.
-- `PARSOID_DOMAIN_{domain}` defines uri and domain for parsoid service. You can specify any number of such variables (by the number of domains for the service)
+- `PARSOID_DOMAIN_{domain}` defines uri and domain for parsoid service. The '{domain}' word should be the same as `MW_REST_DOMAIN` parameter in MediaWiki web container. You can specify any number of such variables (by the number of domains for the service)
 
 ### Examples ###
 
