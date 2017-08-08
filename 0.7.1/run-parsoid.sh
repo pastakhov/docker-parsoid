@@ -4,10 +4,10 @@ set -e
 
 cd $PARSOID_HOME
 
-mwApis=${!PARSOID_MWAPIS_*}
+domains="${!PARSOID_DOMAIN_*} ${!PARSOID_MWAPIS_*}"
 
-if [ -z $mwApis ]; then
-    echo >&2 'You must provite PARSOID_MWAPIS_* variables, for example: export PARSOID_MWAPIS_localhost=http://localhost/w/api.php'
+if [ -z $domains ]; then
+    echo >&2 'You must provite PARSOID_DOMAIN_* variables, for example: export PARSOID_DOMAIN_localhost=http://localhost/w/api.php'
     exit 2;
 fi
 
@@ -84,7 +84,7 @@ services:
 EOT
 
 # see https://www.mediawiki.org/wiki/Parsoid/Setup#Configuration
-for var in $mwApis
+for var in $domains
 do
     if [ -z ${!var} ]; then
         echo >&2 "The $var variable must not be an empty string";
