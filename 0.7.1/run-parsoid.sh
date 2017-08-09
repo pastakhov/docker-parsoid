@@ -2,6 +2,11 @@
 
 set -e
 
+#backward compatibility
+if [[ -z "$PARSOID_NUM_WORKERS" && -n "$NUM_WORKERS" ]]; then
+    PARSOID_NUM_WORKERS="$NUM_WORKERS"
+fi
+
 cd $PARSOID_HOME
 
 domains="${!PARSOID_DOMAIN_*} ${!PARSOID_MWAPIS_*}"
@@ -16,12 +21,12 @@ cat <<EOT > config.yaml
 # Number of worker processes to spawn.
 # Set to 0 to run everything in a single process without clustering.
 # Use 'ncpu' to run as many workers as there are CPU units
-num_workers: '{env(NUM_WORKERS,0)}'
+num_workers: ${PARSOID_NUM_WORKERS:-'0'}
 
 worker_heartbeat_timeout: 300000
 
 logging:
-    level: info
+    level: ${PARSOID_LOGGING_LEVEL:-info}
 
 services:
   - module: lib/index.js
@@ -86,13 +91,15 @@ EOT
 # see https://www.mediawiki.org/wiki/Parsoid/Setup#Configuration
 for var in $domains
 do
-    if [ -z ${!var} ]; then
+    if [ -z "${!var}" ]; then
         echo >&2 "The $var variable must not be an empty string";
     fi
 
-    echo '          -' >> config.yaml
-    echo "            uri: '${!var}'" >> config.yaml
-    echo "            domain: '${var:15}'" >> config.yaml
+    cat <<EOT >> config.yaml
+          -
+            uri: '${!var}'
+            domain: '${var:15}'
+EOT
 done
 
 su -c 'nodejs bin/server.js' $PARSOID_USER
