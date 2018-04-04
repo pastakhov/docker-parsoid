@@ -7,7 +7,7 @@ RUN apk add --no-cache nodejs nodejs-npm python git tar bash make
 
 ENV PARSOID_HOME=/var/lib/parsoid \
     PARSOID_USER=parsoid \
-    PARSOID_VERSION=0.9.0
+    PARSOID_VERSION=0.8.0
 
 # Parsoid setup
 RUN set -x; \
