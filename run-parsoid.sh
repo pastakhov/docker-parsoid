@@ -102,4 +102,4 @@ do
 EOT
 done
 
-su -c 'nodejs bin/server.js' $PARSOID_USER
+su -c 'node bin/server.js' $PARSOID_USER
