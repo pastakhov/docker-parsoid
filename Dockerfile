@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 
-MAINTAINER pastakhov@yandex.ru
+MAINTAINER luiz@thenets.org
 
 # Install requered packages
 RUN set -x; \
