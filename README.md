@@ -9,13 +9,13 @@ It is a part of [Containerized Mediawiki install](https://github.com/pastakhov/c
 - Parsoid
 
 ## How to deploy
-To start the [Parsoid](https://www.mediawiki.org/wiki/Parsoid) run the command below. Just pay attention to WikiMedia version and choose a compatible Parsoid version.
+To start the [Parsoid](https://www.mediawiki.org/wiki/Parsoid) run the command below. Just pay attention to MediaWiki version and choose a compatible Parsoid version.
 
 ```
-# For WikiMedia 28, 29 and 30
+# For MediaWiki 28, 29 and 30
 docker run -it -p 8080:80 -e PARSOID_DOMAIN_localhost=http://localhost/w/api.php thenets/parsoid:0.8.0
 
-# For WikiMedia 31
+# For MediaWiki 31
 docker run -it -p 8080:80 -e PARSOID_DOMAIN_localhost=http://localhost/w/api.php thenets/parsoid:0.9.0
 ```
 
