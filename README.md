@@ -1,5 +1,7 @@
 # MediaWiki Parsoid with Docker
 
+[![Docker Pulls](https://img.shields.io/docker/pulls/thenets/parsoid.svg?style=flat-square&maxAge=86400)](https://hub.docker.com/r/thenets/parsoid/)
+
 This repo contains [Docker](https://docs.docker.com/) container to run the [Parsoid](https://www.mediawiki.org/wiki/Parsoid) application.
 
 It is a part of [Containerized Mediawiki install](https://github.com/pastakhov/compose-mediawiki-ubuntu) project created by [Pavel Astakhov](https://github.com/pastakhov).
