@@ -11,3 +11,12 @@ before_install:
 script:
 - make build
 - make unit-test
+
+notifications:
+  email: false
+  irc:
+    channels:
+      - "chat.freenode.net#thenets-parsoid"
+    on_success: change # default: always
+    on_failure: always # default: always
+    use_notice: true
